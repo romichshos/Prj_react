@@ -1,6 +1,7 @@
 export default
-[ 'USD'
-, 'GBP'
-, 'UAH'
-, 'RUB'
-, 'EUR']
+[ 'BTN_USD'
+, 'BTN_GBP'
+, 'BTN_UAH'
+, 'BTN_RUB'
+, 'BTN_EUR'
+, 'BTN_COIN']

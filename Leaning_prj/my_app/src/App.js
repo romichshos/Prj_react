@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import Ticker from './Ticker/Ticker.js';
 
 import currencies from './currencies.js';
 class App extends Component {
 
     state ={
-        selectedPairs:[]
+        selectedPairs:[],
     };
 
     handleCheckbox = (currency) => event=>{
@@ -20,10 +21,10 @@ class App extends Component {
                 pairs.push(currency);
             }
             else{
-                pairs.delete(currency);
+                pairs = pairs.filter(pair => pair!== currency);
             }
-            return {selectedPairs
-            :['COIN']}
+            return {selectedPairs:
+                pairs,}
             })
 
     };
@@ -35,14 +36,17 @@ class App extends Component {
           <ul className="My_curr">
               {currencies.map(curr=>
                   (<li key={curr} className="currItem">
-                      <label>{curr}
-                          <input type="checkbox" id={curr} onChange={this.handleCheckbox} />
-                      </label>
-                  </li>)
+                       <input type="checkbox" id={curr} onChange={this.handleCheckbox(curr)} />
+                       <label htmlFor={curr}>{curr.toUpperCase()}</label>
+                  </li>
+                  )
                   )
               }
           </ul>
        </aside>
+          <main>
+              {this.state.selectedPairs.map(pair => <Ticker key={pair} pair={pair}/>)}
+          </main>
       </div>
     );
   }
